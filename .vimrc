@@ -22,69 +22,73 @@ set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
 
+" change cursor depending on mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
-set autoindent												" Enable auto indent
-set autoread													" reload files when changed on disk
-set backspace=indent,eol,start				" Allow backspace in insert mode
-set backupdir=~/.vim/backups					" Centralize backups
-set backupskip=/tmp/*,/private/tmp/* 	" Don’t create backups when editing files in certain directories
+set autoindent                                  " Enable auto indent
+set autoread                                    " reload files when changed on disk
+set backspace=indent,eol,start                  " Allow backspace in insert mode
+set backupdir=~/.vim/backups                    " Centralize backups
+set backupskip=/tmp/*,/private/tmp/*            " Don’t create backups when editing files in certain directories
 set binary
-set clipboard=unnamed									" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set cursorline												" Highlight current line
-set directory=~/.vim/swaps						" Centralize swapfiles
-set encoding=utf-8 nobomb							" Use UTF-8 without BOM
-set esckeys														" Allow cursor keys in insert mode
-set expandtab													" expand tabs to spaces
-set exrc															" Enable per-directory .vimrc files and disable unsafe commands in them
-set gdefault													" Add the g flag to search/replace by default
-set hlsearch													" Highlight searches
-set ignorecase												" Ignore case of searches
-set incsearch													" Highlight dynamically as pattern is typed
-set laststatus=2											" Always show status line
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_	" Show “invisible” characters
-set list															" Show “invisible” characters
-set modeline 													" Respect modeline in files
+set clipboard=unnamed                           " Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set cursorline                                  " Highlight current line
+set directory=~/.vim/swaps                      " Centralize swapfiles
+set encoding=utf-8 nobomb                       " Use UTF-8 without BOM
+set esckeys                                     " Allow cursor keys in insert mode
+set expandtab                                   " expand tabs to spaces
+set exrc                                        " Enable per-directory .vimrc files and disable unsafe commands in them
+set gdefault                                    " Add the g flag to search/replace by default
+set ignorecase                                  " Ignore case of searches
+set incsearch                                   " Highlight dynamically as pattern is typed
+set laststatus=2                                " Always show status line
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_            " Show “invisible” characters
+set list                                        " Show “invisible” characters
+set modeline                                    " Respect modeline in files
 set modelines=4
-set mouse=a														" Enable mouse in all modes
-set nocompatible											" Make Vim more useful
-set noeol															" Don’t add empty newlines at the end of files
-set noerrorbells											" Disable error bells
-set nostartofline											" Don’t reset cursor to start of line when moving around.
-set number														" Enable line numbers
-if exists("&relativenumber")					" Use relative line numbers
-	set relativenumber
-	au BufReadPost * set relativenumber
+set mouse=a                                     " Enable mouse in all modes
+set nocompatible                                " Make Vim more useful
+set noeol                                       " Don’t add empty newlines at the end of files
+set noerrorbells                                " Disable error bells
+set nostartofline                               " Don’t reset cursor to start of line when moving around.
+set number                                      " Enable line numbers
+if exists("&relativenumber")                    " Use relative line numbers
+  set relativenumber
+  au BufReadPost * set relativenumber
 endif
-set ruler															" Show the cursor position
-set scrolloff=3												" Start scrolling three lines before the horizontal window border
-set secure														" Enable per-directory .vimrc files and disable unsafe commands in them
-set shiftwidth=2											" normal mode indentation commands use 2 spaces
-set shortmess=atI											" Don’t show the intro message when starting Vim
-set showcmd														" Show the (partial) command as it’s being typed
-set showmode													" Show the current mode
-set smartcase													" case-sensitive search if any caps
-set softtabstop=2											" insert mode tab and backspace uses 2 spaces
+set ruler                                       " Show the cursor position
+set scrolloff=3                                 " Start scrolling three lines before the horizontal window border
+set secure                                      " Enable per-directory .vimrc files and disable unsafe commands in them
+set shiftwidth=2                                " normal mode indentation commands use 2 spaces
+set shortmess=atI                               " Don’t show the intro message when starting Vim
+set showcmd                                     " Show the (partial) command as it’s being typed
+set showmode                                    " Show the current mode
+set smartcase                                   " case-sensitive search if any caps
+set softtabstop=2                               " insert mode tab and backspace uses 2 spaces
 set splitbelow
 set splitright
-set tabstop=8													" actual tabs occupy 8 characters
-set title															" Show the filename in the window titlebar
-set ttyfast														" Optimize for fast terminal connections
-if exists("&undodir")									" Centralize undo history
-	set undodir=~/.vim/undo
+set tabstop=8                                   " actual tabs occupy 8 characters
+set title                                       " Show the filename in the window titlebar
+set ttyfast                                     " Optimize for fast terminal connections
+if exists("&undodir")                           " Centralize undo history
+  set undodir=~/.vim/undo
 endif
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
-set wildmenu													" Enhance command-line completion
+set wildmenu                                    " Enhance command-line completion
 set wildmode=longest,list,full
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
 endfunction
 
 " keyboard shortcuts
@@ -118,17 +122,17 @@ vnoremap p "_dP
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-	" fdoc is yaml
-	autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
-	" md is markdown
-	autocmd BufRead,BufNewFile *.md set filetype=markdown
-	autocmd BufRead,BufNewFile *.md set spell
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " fdoc is yaml
+  autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
+  " md is markdown
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.md set spell
 endif
 
 " plugin settings
@@ -173,6 +177,7 @@ let g:EasyMotion_smartcase = 1
 
 " Airline config
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " if !exists('g:airline_symbols')
 "   let g:airline_symbols = {}
@@ -183,3 +188,4 @@ let g:airline#extensions#default#layout = [
   \ [ 'a', 'b', 'c' ],
   \ [ 'x', 'z', 'warning' ]
   \ ]
+
