@@ -78,9 +78,7 @@
     fi \
     }; f"
 
-  rh = "reset HEAD"
-
-  rhh = "reset HEAD --hard"
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
 
 [apply]
 
