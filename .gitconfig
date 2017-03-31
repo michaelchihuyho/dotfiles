@@ -78,6 +78,10 @@
     fi \
     }; f"
 
+  rh = "reset HEAD"
+
+  rhh = "reset HEAD --hard"
+
 [apply]
 
   # Detect whitespace errors when applying a patch
