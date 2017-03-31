@@ -72,6 +72,9 @@ set smartcase                                   " case-sensitive search if any c
 set softtabstop=2                               " insert mode tab and backspace uses 2 spaces
 set splitbelow
 set splitright
+set statusline+=%#warningmsg#                   " Syntastic status settings
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 set tabstop=8                                   " actual tabs occupy 8 characters
 set title                                       " Show the filename in the window titlebar
 set ttyfast                                     " Optimize for fast terminal connections
@@ -135,7 +138,7 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.md set spell
 endif
 
-" plugin settings
+" Plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:gitgutter_enabled = 0
@@ -189,3 +192,10 @@ let g:airline#extensions#default#layout = [
   \ [ 'x', 'z', 'warning' ]
   \ ]
 
+" Syntastic settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = './node_modules/eslint/bin/eslint.js'
