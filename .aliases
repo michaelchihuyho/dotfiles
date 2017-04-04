@@ -165,6 +165,8 @@ alias path='echo -e ${PATH//:/\\n}'
 # Nerdwallet!
 alias vup="cd ~/dev-vagrant/vmware && vagrant up && vagrant ssh"
 
+# alias vagrant=color-vagrant
+
 # Git
 alias ga="git add"
 alias gaa="git add --all"
@@ -176,7 +178,10 @@ alias gco="git checkout"
 alias gd="git d"
 alias gp="git push"
 alias gl="git pull"
+alias glg="git log --stat --max-count=10"
+alias glgg="g l"
 alias ggpush="git push origin HEAD"
+alias ggpur="git pull --rebase"
 alias greb="git reb"
 alias grh="git reset HEAD"
 alias grhh="git reset HEAD --hard"
