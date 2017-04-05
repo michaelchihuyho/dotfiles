@@ -7,7 +7,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
-alias myn = "cd /srv/nerdwallet/my-nerdwallet"
+alias myn="cd /srv/nerdwallet/my-nerdwallet"
 
 # Shortcuts
 alias d="cd ~/Documents"
