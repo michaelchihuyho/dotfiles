@@ -163,8 +163,13 @@ alias reload="exec $SHELL -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
+# Open iPhone Simulator
+alias sim='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
+
 # Nerdwallet!
 alias vup="cd ~/dev-vagrant/vmware && vagrant up && vagrant ssh"
+alias vssh="cd ~/dev-vagrant/vmware && vagrant ssh"
+alias vstat="cd ~/dev-vagrant/vmware && vagrant status"
 
 # alias vagrant=color-vagrant
 
