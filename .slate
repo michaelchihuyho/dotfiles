@@ -36,6 +36,8 @@ config resizePercentOf screenSize
 # Push Bindings
 bind pad6       push  right   bar-resize:screenSizeX/2
 bind pad4      push  left    bar-resize:screenSizeX/2
+bind pad8       push  up   bar-resize:screenSizeY/3
+bind pad2      push  down    bar-resize:screenSizeY*2/3
 # bind pageUp:ctrl    push  up      bar-resize:screenSizeY/2
 # bind pageDown:ctrl  push  down    bar-resize:screenSizeY/2
 
