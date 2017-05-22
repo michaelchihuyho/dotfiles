@@ -3,6 +3,9 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
+# Use Apple's ssh to enable keychain
+export GIT_SSH="/usr/bin/ssh"
+
 # Enable persistent REPL history for `node`.
 export NODE_REPL_HISTORY=~/.node_history;
 # Allow 32³ entries; the default is 1000.
