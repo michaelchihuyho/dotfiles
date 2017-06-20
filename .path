@@ -1,0 +1,2 @@
+export PATH="/srv/nerdwallet/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
