@@ -168,7 +168,7 @@ alias sim='open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 
 # Nerdwallet!
 alias vup="cd ~/dev-vagrant/vmware && vagrant up && vagrant ssh"
-alias vssh="cd ~/dev-vagrant/vmware && vagrant ssh"
+alias vssh="tmux attach -t vagrant || tmuxinator start vagrant"
 alias vstat="cd ~/dev-vagrant/vmware && vagrant status"
 
 # alias vagrant=color-vagrant
