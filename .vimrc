@@ -148,8 +148,8 @@ let g:jsx_ext_required = 0
 
 " Use ripgrep
 if executable('rg')
-  set grepprg=rg\ --no-heading
-  let g:ackprg = 'rg --vimgrep --no-heading'
+  set grepprg=rg\ --no-heading\ -S
+  let g:ackprg = 'rg --vimgrep --no-heading -S'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'rg -l --color never "" %s'
