@@ -118,6 +118,8 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 nnoremap gu <C-u>
 nnoremap gy <C-d>
+nnoremap <leader>+ :exe "vertical resize +10"<CR>
+nnoremap <leader>- :exe "vertical resize -10"<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
