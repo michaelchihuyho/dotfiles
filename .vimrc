@@ -106,10 +106,10 @@ let mapleader=","
 inoremap jj <ESC>
 noremap <leader>ss :call StripWhitespace()<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR> " Save a file as root (,W)
-noremap gh <C-w>h
-noremap gj <C-w>j
-noremap gk <C-w>k
-noremap gl <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 noremap <leader>l :Align
 nnoremap <leader>a :Ack!<space>
 nnoremap <leader>b :CtrlPBuffer<CR>
