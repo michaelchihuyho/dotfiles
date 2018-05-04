@@ -157,6 +157,10 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:NERDTreeShowHidden=1
 let g:jsx_ext_required = 0
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 " Use ripgrep
 if executable('rg')
