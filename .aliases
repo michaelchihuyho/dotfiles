@@ -168,6 +168,7 @@ alias sim='open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 
 # vim
 alias v="nvim"
+alias vim="nvim"
 
 # Git
 alias ga="git add"
