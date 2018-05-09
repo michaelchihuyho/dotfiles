@@ -166,13 +166,8 @@ alias path='echo -e ${PATH//:/\\n}'
 # Open iPhone Simulator
 alias sim='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
 
-# Nerdwallet!
-alias vup="cd ~/dev-vagrant/vmware/slim && vagrant up && vagrant ssh"
-alias vssh="cd ~/dev-vagrant/vmware/slim && vagrant ssh"
-# alias vssh="tmux attach -t vagrant || tmuxinator start vagrant"
-alias vstat="cd ~/dev-vagrant/vmware/slim && vagrant status"
-
-# alias vagrant=color-vagrant
+# vim
+alias v="nvim"
 
 # Git
 alias ga="git add"
