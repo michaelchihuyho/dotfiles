@@ -6,6 +6,8 @@ export EDITOR='vim';
 # Use Apple's ssh to enable keychain
 export GIT_SSH="/usr/bin/ssh"
 
+export GOPATH="$HOME/go"
+
 # Enable persistent REPL history for `node`.
 export NODE_REPL_HISTORY=~/.node_history;
 # Allow 32³ entries; the default is 1000.

@@ -28,3 +28,6 @@ Plugin 'vim-airline/vim-airline'          " Status bar stuff
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/vim-peekaboo'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go utils
+" Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
+" Plugin 'zchee/deoplete-go'
