@@ -8,6 +8,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias myn="cd /srv/nerdwallet/my-nerdwallet"
+alias cdg="cd $GOPATH/src/github.com/NerdWallet"
 
 # Shortcuts
 alias d="cd ~/Documents"
