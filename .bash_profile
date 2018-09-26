@@ -50,3 +50,8 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# protobuf
+if [[ ":$PATH:" != *":/usr/local/opt/protobuf@2.5/bin"* ]]; then
+    export PATH=/usr/local/opt/protobuf@2.5/bin:$PATH
+fi
