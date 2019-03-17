@@ -1,3 +1,4 @@
+"
 " Vim plug setup
 call plug#begin('~/.local/share/nvim/plugged')
 
