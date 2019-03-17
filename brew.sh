@@ -88,6 +88,7 @@ brew install git
 #brew install imagemagick --with-webp
 #brew install lua
 #brew install lynx
+brew install nvim
 #brew install p7zip
 #brew install pigz
 #brew install pv
