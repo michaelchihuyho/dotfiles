@@ -1,21 +1,47 @@
-" configure Vundle
-filetype on " without this vim emits a zero exit status, later, because of :ft off
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Vim plug setup
+call plug#begin('~/.local/share/nvim/plugged')
 
-" install Vundle bundles
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
+Plug 'airblade/vim-gitgutter'           " Git stuff in the gutter
+Plug 'michaeljsmith/vim-indent-object'  " select indent blocks
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file search
+Plug 'majutsushi/tagbar'                " ctag stuff
+Plug 'mileszs/ack.vim'                  " Global search
+Plug 'MarcWeber/vim-addon-mw-utils'     " necesary for vim snipmate
+Plug 'garbas/vim-snipmate'              " snippets
+Plug 'tomtom/tlib_vim'                  " misc utils used by other plugins?
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'w0rp/ale'                         " Linting
+Plug 'tpope/vim-commentary'             " Commenting code
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'               " Git
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'               " Surrounding characters
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/Align'
+Plug 'vim-scripts/greplace.vim'
+Plug 'vim-scripts/matchit.zip'
+Plug 'groenewege/vim-less'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'vim-airline/vim-airline'          " Status bar stuff
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mxw/vim-jsx'
+Plug 'junegunn/vim-peekaboo'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go utils
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
+" Plugin 'zchee/deoplete-go'
 
-call vundle#end()
+" Initialize plugin system
+call plug#end()
 
-" ensure ftdetect et al work by including this after the Vundle stuff
-filetype plugin indent on
 
 " Enable syntax highlighting
-syntax on
+" syntax on
 
 " Use the Solarized Dark theme
 set background=dark
