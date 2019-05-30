@@ -153,6 +153,8 @@ nnoremap gu <C-u>
 nnoremap gy <C-d>
 nnoremap <leader>+ :exe "vertical resize +10"<CR>
 nnoremap <leader>- :exe "vertical resize -10"<CR>
+nmap <silent> <C-m> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
@@ -186,9 +188,11 @@ let g:NERDTreeShowHidden=1
 let g:jsx_ext_required = 0
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tsserver'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'typescript': ['prettier', 'tslint'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '⤫'
