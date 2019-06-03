@@ -153,7 +153,7 @@ nnoremap gu <C-u>
 nnoremap gy <C-d>
 nnoremap <leader>+ :exe "vertical resize +10"<CR>
 nnoremap <leader>- :exe "vertical resize -10"<CR>
-nmap <silent> <C-l> <Plug>(ale_next_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
