@@ -36,6 +36,8 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
 " Plugin 'zchee/deoplete-go'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 
 " Initialize plugin system
 call plug#end()
