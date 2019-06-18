@@ -8,6 +8,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias pk="~/src/hipcamp/pocketknife/pocketknife-app"
+alias hr="~/src/hipcamp/hipcamp-reserve"
 
 # Shortcuts
 alias d="cd ~/Documents"
