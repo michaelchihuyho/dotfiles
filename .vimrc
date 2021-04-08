@@ -7,12 +7,9 @@ Plug 'michaeljsmith/vim-indent-object'  " select indent blocks
 Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file search
 Plug 'majutsushi/tagbar'                " ctag stuff
 Plug 'mileszs/ack.vim'                  " Global search
-Plug 'MarcWeber/vim-addon-mw-utils'     " necesary for vim snipmate
-Plug 'garbas/vim-snipmate'              " snippets
 Plug 'tomtom/tlib_vim'                  " misc utils used by other plugins?
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'w0rp/ale'                         " Linting
 Plug 'tpope/vim-commentary'             " Commenting code
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -28,21 +25,18 @@ Plug 'groenewege/vim-less'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-airline/vim-airline'          " Status bar stuff
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mxw/vim-jsx'
 Plug 'junegunn/vim-peekaboo'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }  " Go utils
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
-" Plugin 'zchee/deoplete-go'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'jparise/vim-graphql'
 Plug 'kchmck/vim-coffee-script'
-Plug 'slim-template/vim-slim.git'
 Plug 'xolox/vim-misc'                   " Required for below plugin
 Plug 'xolox/vim-session'                " Save and restore session
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'slim-template/vim-slim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
@@ -146,9 +140,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <leader>l :Align
 nnoremap <leader>a :Ack!<space>
-nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
@@ -156,11 +150,20 @@ nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-nnoremap gu <C-u>
-nnoremap gy <C-d>
 nnoremap <leader>+ :exe "vertical resize +10"<CR>
 nnoremap <leader>- :exe "vertical resize -10"<CR>
-nmap <silent> <C-n> <Plug>(ale_next_wrap)
+" Remap keys for applying codeAction to the current line.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> K :call CocAction('doHover')<CR>
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
@@ -171,6 +174,15 @@ cnoremap w!! %!sudo tee > /dev/null %
 
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
+
+function! ShowDocIfNoDiagnostic(timer_id)
+  silent call CocActionAsync('doHover')
+endfunction
+
+function! s:show_hover_doc()
+  " call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
 
 " Automatic commands
 if has("autocmd")
@@ -185,6 +197,8 @@ if has("autocmd")
   " md is markdown
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.md set spell
+  autocmd CursorHoldI * :call <SID>show_hover_doc()
+  autocmd CursorHold * :call <SID>show_hover_doc()
 endif
 
 " Plugin settings
@@ -192,20 +206,14 @@ let g:ctrlp_match_window = 'order:ttb,max:20'
 let g:NERDSpaceDelims=1
 let g:NERDTreeShowHidden=1
 let g:jsx_ext_required = 0
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'ruby': ['rubocop'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\   'ruby': ['rubocop'],
-\}
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:ale_linters_explicit = 1
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 " Use ripgrep
 if executable('rg')
@@ -246,10 +254,6 @@ let g:EasyMotion_smartcase = 1
 " Airline config
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
-let g:airline#extensions#ale#enabled = 1
-
-" Deoplete config
-let g:deoplete#enable_at_startup = 1
 
 " Go config
 au FileType go set noexpandtab
@@ -277,3 +281,4 @@ let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
 
 let g:session_autoload = 'no'
+
