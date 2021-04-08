@@ -7,8 +7,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
-alias pk="~/src/hipcamp/pocketknife/pocketknife-app"
-alias hr="~/src/hipcamp/hipcamp-reserve"
+alias pk="~/src/hipcamp/pocketknife/pocketknife-app && nvm use"
+alias pkc="~/src/hipcamp/pocketknife-copy/pocketknife-app && nvm use"
+alias hr="~/src/hipcamp/hipcamp-reserve && nvm use"
+alias psql="psql -h localhost -U hipcamp -p 5432 -d hipcamp2"
 
 # Shortcuts
 alias d="cd ~/Documents"

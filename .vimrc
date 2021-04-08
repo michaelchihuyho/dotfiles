@@ -38,6 +38,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plugin 'zchee/deoplete-go'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'jparise/vim-graphql'
+Plug 'kchmck/vim-coffee-script'
+Plug 'slim-template/vim-slim.git'
+Plug 'xolox/vim-misc'                   " Required for below plugin
+Plug 'xolox/vim-session'                " Save and restore session
 
 " Initialize plugin system
 call plug#end()
@@ -189,11 +194,13 @@ let g:NERDTreeShowHidden=1
 let g:jsx_ext_required = 0
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tsserver'],
+\   'typescript': ['eslint'],
+\   'ruby': ['rubocop'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
-\   'typescript': ['prettier', 'tslint'],
+\   'typescript': ['eslint'],
+\   'ruby': ['rubocop'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '⤫'
@@ -268,3 +275,5 @@ let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
+
+let g:session_autoload = 'no'
